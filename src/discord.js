@@ -12,9 +12,7 @@ module.exports.send = (id, token, repo, branch, url, commits, size) => new Promi
         return;
     }
 
-    client.send(createEmbed(repo, branch, url, commits, size), {
-        username: repo
-    }).then(() => {
+    client.send(createEmbed(repo, branch, url, commits, size)).then(() => {
         console.log("Successfully sent the message!");
         resolve();
     }, reject);
