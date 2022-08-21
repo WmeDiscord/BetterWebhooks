@@ -5,7 +5,8 @@ const webhook = require('../src/discord.js');
 
 async function run() {
 	const payload = github.context.payload;
-	const pfp = payload.owner.avatar_url;
+	//const pfp = payload.owner.avatar_url;
+	const pfp = "https://canary.discord.com/assets/1f0bfc0865d324c2587920a7d80c609b.png";
 	const repository = payload.repository.full_name;
 	const repository_short = payload.repository.name;
 	const commits = payload.commits;
