@@ -6,15 +6,13 @@ module.exports.send = (id, token, repo, branch, url, commits, size, pfp, repoSho
     console.log("Preparing Webhook...");
     try {
         client = new discord.WebhookClient(id, token);
-        client.avatarURL = pfp;
-        client.username = repoShort;
     }
     catch (error) {
         reject(error.message);
         return;
     }
 
-    client.send(createEmbed(repo, branch, url, commits, size)).then(() => {
+    client.send(createEmbed(repo, branch, url, commits, size), {username:repoShort}).then(() => {
         console.log("Successfully sent the message!");
         resolve();
     }, reject);
