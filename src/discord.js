@@ -1,11 +1,13 @@
 const discord = require('discord.js');
 const MAX_MESSAGE_LENGTH = 40;
 
-module.exports.send = (id, token, repo, branch, url, commits, size) => new Promise((resolve, reject) => {
+module.exports.send = (id, token, repo, branch, url, commits, size, pfp, repoShort) => new Promise((resolve, reject) => {
     var client;
     console.log("Preparing Webhook...");
     try {
         client = new discord.WebhookClient(id, token);
+        client.avatarURL = pfp;
+        client.username = repoShort;
     }
     catch (error) {
         reject(error.message);

@@ -5,7 +5,9 @@ const webhook = require('../src/discord.js');
 
 async function run() {
 	const payload = github.context.payload;
+	const pfp = payload.owner.avatar_url;
 	const repository = payload.repository.full_name;
+	const repository_short = payload.repository.name;
 	const commits = payload.commits;
 	const size = commits.length;
 	const branch = payload.ref.split('/')[payload.ref.split('/').length - 1];
@@ -22,7 +24,7 @@ async function run() {
     const id = core.getInput("id");
     const token = core.getInput("token");
 
-	webhook.send(id, token, repository, branch, payload.compare, commits, size).catch(err => core.setFailed(err.message));
+	webhook.send(id, token, repository, branch, payload.compare, commits, size, pfp, repository_short).catch(err => core.setFailed(err.message));
     
 }
 
