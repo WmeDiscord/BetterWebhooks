@@ -12,7 +12,9 @@ module.exports.send = (id, token, repo, branch, url, commits, size, pfp, repoSho
         return;
     }
 
-    client.send(createEmbed(repo, branch, url, commits, size), {username:repoShort}).then(() => {
+    client.send(createEmbed(repo, branch, url, commits, size)).then((send) => {
+        send.username = repoShort
+        send.avatarURL = pfp
         console.log("Successfully sent the message!");
         resolve();
     }, reject);
