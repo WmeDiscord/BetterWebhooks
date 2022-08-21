@@ -1,7 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-const analysis = require('../src/analysis.js');
 const webhook = require('../src/discord.js');
 
 async function run() {
@@ -23,9 +22,8 @@ async function run() {
     const id = core.getInput("id");
     const token = core.getInput("token");
 
-	analysis.start(isSkipped(payload.head_commit)).then((report) => {
-        webhook.send(id, token, repository, branch, payload.compare, commits, size, report).catch(err => core.setFailed(err.message));
-    }, err => core.setFailed(err));
+	webhook.send(id, token, repository, branch, payload.compare, commits, size).catch(err => core.setFailed(err.message));
+    
 }
 
 try {

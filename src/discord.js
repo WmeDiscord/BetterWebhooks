@@ -1,7 +1,7 @@
 const discord = require('discord.js');
 const MAX_MESSAGE_LENGTH = 40;
 
-module.exports.send = (id, token, repo, branch, url, commits, size, report) => new Promise((resolve, reject) => {
+module.exports.send = (id, token, repo, branch, url, commits, size) => new Promise((resolve, reject) => {
     var client;
     console.log("Preparing Webhook...");
     try {
@@ -12,7 +12,7 @@ module.exports.send = (id, token, repo, branch, url, commits, size, report) => n
         return;
     }
 
-    client.send(createEmbed(repo, branch, url, commits, size, report), {
+    client.send(createEmbed(repo, branch, url, commits, size), {
         username: repo
     }).then(() => {
         console.log("Successfully sent the message!");
@@ -20,7 +20,7 @@ module.exports.send = (id, token, repo, branch, url, commits, size, report) => n
     }, reject);
 });
 
-function createEmbed(repo, branch, url, commits, size, report) {
+function createEmbed(repo, branch, url, commits, size) {
     console.log("Constructing Embed...");
     var latest = commits[0];
 
@@ -30,10 +30,6 @@ function createEmbed(repo, branch, url, commits, size, report) {
                 .setTitle(size + (size == 1 ? " Commit was " : " Commits were ") + "added to " + repo + " (" + branch + ")")
                 .setDescription(getChangeLog(commits, size))
                 .setTimestamp(Date.parse(latest.timestamp));
-
-    if (report.tests.length > 0) {
-        appendTestResults(embed, report);
-    }
 
     return embed;
 }
