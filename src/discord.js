@@ -12,9 +12,7 @@ module.exports.send = (id, token, repo, branch, url, commits, size, pfp, repoSho
         return;
     }
 
-    client.send(createEmbed(repo, branch, url, commits, size)).then((send) => {
-        send.username = repoShort
-        send.avatarURL = pfp
+    client.send(createEmbed(repo, branch, url, commits, size)).then(() => {
         console.log("Successfully sent the message!");
         resolve();
     }, reject);
@@ -30,7 +28,7 @@ function createEmbed(repo, branch, url, commits, size) {
                 .setTitle(size + (size == 1 ? " Commit was " : " Commits were ") + "added to " + repo + " (" + branch + ")")
                 .setDescription(getChangeLog(commits, size))
                 .setTimestamp(Date.parse(latest.timestamp));
-
+    console.log(JSON.stringify(embed))
     return embed;
 }
 
