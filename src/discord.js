@@ -11,8 +11,13 @@ module.exports.send = (id, token, repo, branch, url, commits, size, pfp, repoSho
         reject(error.message);
         return;
     }
+    embed = createEmbed(repo, branch, url, commits, size)
+    client.send({
+        username: repoShort,
+        avatarURL: pfp,
+        embeds: [embed]
 
-    client.send(createEmbed(repo, branch, url, commits, size)).then(() => {
+    }).then(() => {
         console.log("Successfully sent the message!");
         resolve();
     }, reject);
