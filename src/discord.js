@@ -32,7 +32,8 @@ function createEmbed(repo, branch, url, commits, size) {
                 .setURL(url)
                 .setTitle(size + (size == 1 ? " Commit was " : " Commits were ") + "added to " + repo + " (" + branch + ")")
                 .setDescription(getChangeLog(commits, size))
-                .setTimestamp(Date.parse(latest.timestamp));
+                .setTimestamp(Date.parse(latest.timestamp))
+                .setAuthor("| Github","https://github.githubassets.com/favicons/favicon-dark.png")
     console.log(JSON.stringify(embed))
     return embed;
 }
