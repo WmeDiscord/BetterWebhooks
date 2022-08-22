@@ -33,7 +33,3 @@ try {
 } catch (error) {
     core.setFailed(error.message);
 }
-
-function isSkipped(commit) {
-	return commit.message.toLowerCase().includes("[skip]");
-}
