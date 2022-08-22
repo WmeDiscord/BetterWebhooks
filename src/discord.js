@@ -11,7 +11,7 @@ module.exports.send = (id, token, repo, branch, url, commits, size, pfp, repoSho
         reject(error.message);
         return;
     }
-    embed = createEmbed(repo, branch, url, commits, size)
+    embed = createEmbed(repo, branch, url, commits, size, sender)
     client.send({
         username: repoShort,
         avatarURL: pfp,
@@ -23,7 +23,7 @@ module.exports.send = (id, token, repo, branch, url, commits, size, pfp, repoSho
     }, reject);
 });
 
-function createEmbed(repo, branch, url, commits, size) {
+function createEmbed(repo, branch, url, commits, size, sender) {
     console.log("Constructing Embed...");
     var latest = commits[0];
 
