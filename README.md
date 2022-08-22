@@ -1,4 +1,4 @@
-# Fancier Discord Webhook
+# BetterWebhooks
 This GitHub Action can produce fancy and more meaningful discord messages for your commits.
 
 ## :mailbox_with_no_mail: Inputs
