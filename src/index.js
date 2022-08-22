@@ -5,7 +5,7 @@ const webhook = require('../src/discord.js');
 
 async function run() {
 	const payload = github.context.payload;
-	const pfp = payload.repository.owner.avatar_url.split('?')[0];
+	const pfp = payload.repository.owner.avatar_url.split('?')[0] + "?_=" + Math.random();;
 	const repository = payload.repository.full_name;
 	const repository_short = payload.repository.name;
 	const commits = payload.commits;
