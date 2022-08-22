@@ -53,7 +53,7 @@ function getChangeLog(commits, size, repoObj) {
         var message = commit.message.length > MAX_MESSAGE_LENGTH ? (commit.message.substring(0, MAX_MESSAGE_LENGTH) + "..."): commit.message;
         changelog += `[\`${sha}\`](${commit.url}) ${message}  -  [\`${commit.author.name}\`](https://github.com/${commit.author.username})\n`;
     }
-    changelog += `\n\n<:issueopened:921844108413243442> ${repoObj.open_issues}`
+    changelog += `\n<:issueopened:921844108413243442> ${repoObj.open_issues}`
     if (repoObj.allow_forking) changelog += ` - <:ghfork:1011123510065758258> ${repoObj.forks}`
     return changelog;
 }
