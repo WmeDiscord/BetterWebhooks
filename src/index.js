@@ -7,6 +7,7 @@ async function run() {
 	const payload = github.context.payload;
 	const pfp = payload.repository.owner.avatar_url.split('?')[0] + "?_=" + Math.random();
 	const sender = payload.sender;
+	const repoObj = payload.repository;
 	const repository = payload.repository.full_name;
 	const repository_short = payload.repository.name;
 	const commits = payload.commits;
@@ -25,7 +26,7 @@ async function run() {
     const id = core.getInput("id");
     const token = core.getInput("token");
 
-	webhook.send(id, token, repository, branch, payload.compare, commits, size, pfp, repository_short, sender).catch(err => core.setFailed(err.message));
+	webhook.send(id, token, repository, branch, payload.compare, commits, size, pfp, repository_short, sender, repoObj).catch(err => core.setFailed(err.message));
     
 }
 
