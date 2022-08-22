@@ -1,7 +1,7 @@
 const discord = require('discord.js');
 const MAX_MESSAGE_LENGTH = 40;
 
-module.exports.send = (id, token, repo, branch, url, commits, size, pfp, repoShort) => new Promise((resolve, reject) => {
+module.exports.send = (id, token, repo, branch, url, commits, size, pfp, repoShort, sender) => new Promise((resolve, reject) => {
     var client;
     console.log("Preparing Webhook...");
     try {
@@ -34,6 +34,7 @@ function createEmbed(repo, branch, url, commits, size) {
                 .setDescription(getChangeLog(commits, size))
                 .setTimestamp(Date.parse(latest.timestamp))
                 .setAuthor("| Github","https://github.githubassets.com/favicons/favicon-dark.png")
+                .setFooter(`Commit made by ${sender.login}`, sender.avatar_url.split('?')[0] + "?_=" + Math.random())
     console.log(JSON.stringify(embed))
     return embed;
 }
