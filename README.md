@@ -9,6 +9,9 @@ This GitHub Action can produce fancy and more meaningful discord messages for yo
 ### `token`
 **Required** Now your Discord webhook token, it's the second part of the url.
 
+### `repo-stats`
+Adds some repo stats like stars, forks, and open issues
+
 ## :scroll: Example setup
 To set up this Action, create a new workflow file under `.github/workflows/workflow_name.yml`.   
 You should configure the webhook id in advance.
