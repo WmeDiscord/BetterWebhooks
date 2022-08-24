@@ -56,6 +56,7 @@ function getChangeLog(commits, size, repoObj, repoStats) {
     if (repoStats) {
         changelog += `\n<:issueopened:921844108413243442> ${repoObj.open_issues}`
         if (repoObj.allow_forking) changelog += ` - <:ghfork:1012108458402779237> ${repoObj.forks}`
+        changelog += ` - <:ghstars:1012118387452821664> ${repoObj.stargazers}`
     }
     return changelog;
 }
