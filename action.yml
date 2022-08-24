@@ -8,6 +8,9 @@ inputs:
   token:
     description: The Discord Webhook token
     required: true
+  repo-stats:
+    description: Add some repo stats to the embed
+    required: false
 
 runs:
   using: 'node12'
