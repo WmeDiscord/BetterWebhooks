@@ -18,3 +18,4 @@ jobs:
       with:
         id: ${{ secrets.WEBHOOK_ID }}
         token: ${{ secrets.WEBHOOK_TOKEN }}
+        repo-stats: true
