@@ -25,7 +25,7 @@ async function run() {
 
     const id = core.getInput("id");
     const token = core.getInput("token");
-	const repoStats = core.getInput("repostats") || false;
+	const repoStats = core.getInput("repo-stats") || false;
 
 	webhook.send(id, token, repository, branch, payload.compare, commits, size, pfp, repository_short, sender, repoObj, repoStats).catch(err => core.setFailed(err.message));
     
