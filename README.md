@@ -33,4 +33,5 @@ jobs:
       with:
         id: ${{ secrets.YOUR_DISCORD_WEBHOOK_ID }}
         token: ${{ secrets.YOUR_DISCORD_WEBHOOK_TOKEN }}
+        repo-stats: true
 ```
